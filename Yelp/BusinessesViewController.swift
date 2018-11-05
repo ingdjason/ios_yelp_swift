@@ -68,6 +68,15 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UITableViewCell
+        
+        if let indexPath = tableView.indexPath(for: cell) {
+            let detailsViewController = segue.destination as! DetailsViewController
+            detailsViewController.business = self.businesses[indexPath.row]
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

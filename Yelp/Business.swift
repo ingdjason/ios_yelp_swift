@@ -17,8 +17,9 @@ class Business: NSObject {
     let distance: String?
     let ratingImage: UIImage?
     let reviewCount: NSNumber?
-    let longitude: NSNumber?
-    let latitude: NSNumber?
+    
+    let longitude: Double?
+    let latitude: Double?
     
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
@@ -57,19 +58,12 @@ class Business: NSObject {
             categories = nil
         }
         
-        if let coordinates = dictionary["coordinates"] as? [[String: Any]] {
-            // 1.
-            let photo = coordinates[0]
-            // 2.
-             self.longitude = photo["latitude"] as! NSNumber
-            self.latitude = photo["latitude"] as! NSNumber
-            
-            
-        }else{
-            self.longitude = 0
-            self.latitude = 0 
-        }
+        let coordinates = dictionary["coordinates"] as? NSDictionary
+        var long: Double = coordinates!["latitude"] as! Double
+        var lat: Double = coordinates!["latitude"] as! Double
         
+        self.longitude = long
+        self.latitude = lat
         
         let distanceMeters = dictionary["distance"] as? NSNumber
         if distanceMeters != nil {
