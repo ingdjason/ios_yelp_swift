@@ -19,8 +19,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.rowHeight = 150
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = 150
+        //tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
         
         //searching a table
